@@ -1,0 +1,5 @@
+
+
+$_SESSION['user'] = Nome do usuario que estara logado (ou nao).
+$_SESSION['perm'] = Permissao do usuario; (adm, sem, bas).
+$_SESSION['email'] = Permissao do usuario; (adm, sem, bas).

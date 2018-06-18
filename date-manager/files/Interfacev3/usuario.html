@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gestao de Centidoes</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<header>
+		<div class="nav-bar">
+			<img src="img/logo.png" class="logo">
+			
+		<ul class="menu">
+			<li><a href="inicio.html">Inicio</a></li>
+			<li><a href="empresa.html">Empresas</a></li>
+			<li><a href="relatorio.html">Relatorios</a></li>
+			<li><a href="usuario.html">Usuarios</a></li>
+		</ul>
+			
+		</div>
+
+		
+	</header>
+	<br/><br/>
+	
+	<div class="col-md-6">
+	
+		<div class="cadastroUsuario">
+				<form>
+					<h1>Cadastrar Usuario</h1>
+					<p>Usuario</p>
+					<input type="text" name="usuario" placeholder="Nome de usuario">
+					<p>Senha</p>
+					<input type="password" name="senha" placeholder="Entrar Senha">
+					<p>Verificacao de senha</p>
+					<input type="password" name="verificacao_senha" placeholder="Verificar Senha">
+					<p>E-mail</p>
+					<input type="email" name="email" placeholder="Entrar e-mail">
+					<p>Permissao</p>
+					<select name="permissao">
+						<option value="master">Administrador</option>
+						<option value="s-master">Nao cadastra usuarios</option>
+						<option value="basico">Só gera relatorios</option>
+					</select>
+					<input type="submit" name="cadastrar" value="Cadastrar" href="#">
+
+				</form>
+		</div> 
+		
+		<div class="tableUsuario">
+			<table>
+			  <tbody>
+				<tr>
+				  <th scope="col">Usuario</th>
+				  <th scope="col">Permissao</th>
+					<th scope="col">Gerencia</th>
+				</tr>
+				<tr>
+				  <td>angelica.tovar</td>
+				  <td>Administrador</td>
+					<td class="register_options" align="center"><a href="empresa.html" ><img src="img/edit.png" width="20px" height="20px" ></a>
+						<a href="#" ><img src="img/delete.png" width="20px" height="20px" ></a></td>
+				</tr>
+				<tr>
+				  <td>ange.u</td>
+				  <td>Só gera relatorios</td>
+					<td class="register_options" align="center"><a href="empresa.html" ><img src="img/edit.png" width="20px" height="20px" ></a>
+						<a href="#" ><img src="img/delete.png" width="20px" height="20px" ></a></td>
+				</tr>
+			  </tbody>
+			</table>
+
+		</div>
+		
+	</div>
+	
+	
+	
+	<div align="center" class="help">
+			<br/>
+			<input type="image" src="img/info.png" onClick="#"> 
+		</div>
+	
+</body>
+</html>
