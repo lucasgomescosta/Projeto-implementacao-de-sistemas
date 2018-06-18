@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>empresa</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <!--<link href="bootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">--->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+  <body>
+  
+    <header>
+        <div class="logo">LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="empresa/relatorio.html">Relatorios</a></li>
+                <li><a href="empresa.html" class="active">Empresas</a></li>
+                <li><a href="usuario.html">Usuarios</a></li>
+                <li><a href="login.html" class="btnSair">Sair</a></li>
+            </ul>
+        </nav>
+    <div class="menu-toggle">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        
+  </header>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.menu-toggle').click(function(){
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+  <br/><br/><br/>
+
+  <div class="col-md-3">
+
+    <div align="center" class="formulario">
+      <form name="formCadEmpresa" action="empresa.php" method="post">
+        <table align="center">
+          <tr>
+            <td class="formTittle" colspan="4">Dados da Empresa</td>
+          </tr>
+          <tr>
+            <td class="description">Razao Social:</td>
+            <td><input type="text" name="razao_social"></td>
+
+            <td class="description">CNPJ:</td>
+            <td><input type="text" name="cnpj" maxlength="14" placeholder="Só números"></td>
+          </tr>
+
+          <tr>
+            <td class="description">Contato:</td>
+            <td><input type="text" name="contato"></td>
+          </tr>
+
+          <tr>
+            <td class="description">Rua:</td>
+            <td><input type="text" name="rua"></td>
+            <td class="description">Barrio:</td>
+            <td><input type="text" name="barrio"></td>
+          </tr>
+
+          <tr>
+            <td class="description">CEP:</td>
+            <td><input type="text" name="cep" maxlength="8" placeholder="Só números"></td>
+            <td class="description">Cidade:</td>
+            <td><input type="text" name="cidade"></td>
+          </tr>
+
+          <tr>
+            <td class="description">Estado:</td>
+            <td><input type="text" name="estado"></td>
+            <td class="description">Pais:</td>
+            <td><input type="text" name="pais"></td>
+          </tr>
+
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="description">Inscricao Estadual:</td>
+            <td class="description"><input type="text" name="inscricao_estadual" maxlength="8" placeholder="Só números"></td>
+            <td class="description">Senha IE:</td>
+            <td><input type="text" name="senha_estadual"></td>
+          </tr>
+          <tr>
+            <td class="description">Inscricao Municipal:</td>
+            <td><input type="text" name="inscricao_municipal" maxlength="8" placeholder="Só números"></td>
+            <td class="description">Senha IM:</td>
+            <td><input type="text" name="senha_municipal"></td>
+          </tr>
+          <tr>
+            <td class="description">Inscricao Suframa</td>
+            <td><input type="text" name="inscricao_suframa" maxlength="8" placeholder="Só números"></td>
+            <td class="description">Senha Suf:</td>
+            <td><input type="text" name="senha_suframa"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+
+        </table>
+        <table align="center">
+          <tr>
+            <td class="formTittle" colspan="2">Centidoes Federais</td>
+          </tr>
+          <tr>
+            <td class="description">Receita Federal:</td>
+            <td><input type="date" name="receita_federal"></td>
+          </tr>
+          <tr>
+            <td class="description">Caixa Economica:</td>
+            <td><input type="date" name="caixa_economica"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="formTittle" colspan="2">Centidoes Estaduais</td>
+          </tr>
+
+          <tr>
+            <td class="description">Sefaz:</td>
+            <td><input type="date" name="sefaz"></td>
+          </tr>
+
+          <tr>
+            <td class="description">Falência Concordata:</td>
+            <td><input type="date" name="concordata"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="formTittle" colspan="2">Centidoes Municipais</td>
+          </tr>
+
+          <tr>
+            <td class="description">PMBV:</td>
+            <td><input type="date" name="pmbv"></td>
+          </tr>
+
+          <tr>
+            <td class="description">Alvará de funcionamiento:</td>
+            <td><input type="date" name="alvara"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="formTittle">Suframa:</td>
+            <td><input type="date" name="suframa"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="formTittle">Certificado Digital:</td>
+            <td><input type="date" name="digital"></td>
+          </tr>
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+          <tr>
+            <td class="formTittle">Laudo Bombeiro:</td>
+            <td><input type="date" name="bombeiro"></td>
+          </tr>
+
+          <tr>
+            <td class="separador" colspan="4">  </td>
+          </tr>
+
+          <tr align="center">
+                      
+                      <td width="50%"><input type="reset" name="limpar" value="Limpar"></td>
+                      
+                      <td width="50%"><input value="Cadastrar" target="_parent" onclick="inicio.html" type="submit"/></td>
+
+          </tr>
+
+        </table>
+      </form>
+    </div>
+  </div>
+  
+  <div class="col-md-6>
+    <div align="center" class="help">
+        <br/>
+        <input type="image" src="img/info.png" onClick="#"> 
+        
+      </div>
+  </div>   
+
+</body>
+</html>
