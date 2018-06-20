@@ -143,11 +143,11 @@ $bombeiro = isset($_GET['bombeiro']) ? $_GET["bombeiro"] : null;
           </tr>
           <tr>
             <td class="text-primary">Receita Federal:</td>
-            <td><input type="date"  name="receita_federal" id="receita_federal" required></td>
+            <td><input type="date"  name="receita_federal" id="receita_federal" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="text-primary">Caixa Economica:</td>
-            <td><input type="date" name="caixa_economica" id="caixa_economica" required></td>
+            <td><input type="date" name="caixa_economica" id="caixa_economica" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="separador" colspan="4">  </td>
@@ -158,12 +158,12 @@ $bombeiro = isset($_GET['bombeiro']) ? $_GET["bombeiro"] : null;
 
           <tr>
             <td class="text-primary">Sefaz:</td>
-            <td><input type="date" name="sefaz" id="sefaz" required></td>
+            <td><input type="date" name="sefaz" id="sefaz" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
 
           <tr>
             <td class="text-primary">Falência Concordata:</td>
-            <td><input type="date" name="concordata" id="concordata" required></td>
+            <td><input type="date" name="concordata" id="concordata" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="separador" colspan="4">  </td>
@@ -174,33 +174,33 @@ $bombeiro = isset($_GET['bombeiro']) ? $_GET["bombeiro"] : null;
 
           <tr>
             <td class="text-primary">PMBV:</td>
-            <td><input type="date" name="pmbv" id="pmbv" required></td>
+            <td><input type="date" name="pmbv" id="pmbv" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
 
           <tr>
             <td class="text-primary">Alvará de funcionamiento:</td>
-            <td><input type="date" name="alvara" id="alvara" required></td>
+            <td><input type="date" name="alvara" id="alvara" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="separador" colspan="4">  </td>
           </tr>
           <tr>
             <td class="formTittle">Suframa:</td>
-            <td><input type="date" name="suframa" id="suframa" required></td>
+            <td><input type="date" name="suframa" id="suframa" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="separador" colspan="4">  </td>
           </tr>
           <tr>
             <td class="formTittle">Certificado Digital:</td>
-            <td><input type="date" name="digital" id="digital" required></td>
+            <td><input type="date" name="digital" id="digital" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
           <tr>
             <td class="separador" colspan="4">  </td>
           </tr>
           <tr>
             <td class="formTittle">Laudo Bombeiro:</td>
-            <td><input type="date" name="bombeiro" id="bombeiro" required></td>
+            <td><input type="date" name="bombeiro" id="bombeiro" placeholder="<?php echo date('d/m/Y',strtotime($data["congestart"])) ?>" required></td>
           </tr>
 
           <tr>
