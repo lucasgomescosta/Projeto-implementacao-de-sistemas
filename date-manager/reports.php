@@ -39,22 +39,24 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
     <br/> 
     <div class="formulario2">
     
-      <div class="col-md-6" align="center">
-        <p>Filtar Empresas</p>
-        <select name="filtrarEmpresas" class="sele">
-          <option value="1">Todas Empresas</option>
-          <option value="2">Empresa1</option>
-          <option value="3">Empresa2</option>
-        </select>
-      
-        <p>Filtar Datas</p>
-        <select name="filtrarDatas">
-          <option value="1">Todas as datas</option>
-          <option value="2">Datas vencidas</option>
-          <option value="3">Datas a vencer</option>
-        </select>
+    <div class="row" align="center">
+          <div class="col-sm-6 col-md-6 col-lg-6" align="center">
+                <p>Filtar Empresas</p>
+                <select name="filtrarEmpresas" class="sele" align="center">
+                  <option value="1">Todas Empresas</option>
+                  <option value="2">Empresa1</option>
+                  <option value="3">Empresa2</option>
+                </select>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6" align="center">
+                <p>Filtar Datas</p>
+                <select name="filtrarDatas" align="center">
+                  <option value="1">Todas as datas</option>
+                  <option value="2">Datas vencidas</option>
+                  <option value="3">Datas a vencer</option>
+                </select>
+          </div>
       </div>
-      
     <br/>
     <br/>
     
@@ -89,15 +91,15 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                     echo "
                         <tr class='table_content'>
                           <th nowrap scope='row'>".$row['razao_social']."</th>
-                          <td>".$row['receita_federal']."</td>
-                          <td>".$row['caixa_economica']."</td>
-                          <td>".$row['sefaz']."</td>
-                          <td>".$row['concordata']."</td>
-                          <td>".$row['pmbv']."</td>
-                          <td>".$row['alvara']."</td>
-                          <td>".$row['suframa']."</td>
-                          <td>".$row['digital']."</td>
-                          <td>".$row['bombeiro']."</td>
+                          <td class='text-info'>".$row['receita_federal']."</td>
+                          <td class='text-info'>".$row['caixa_economica']."</td>
+                          <td class='text-info'>".$row['sefaz']."</td>
+                          <td class='text-info'>".$row['concordata']."</td>
+                          <td class='text-info'>".$row['pmbv']."</td>
+                          <td class='text-info'>".$row['alvara']."</td>
+                          <td class='text-info'>".$row['suframa']."</td>
+                          <td class='text-info'>".$row['digital']."</td>
+                          <td class='text-info'>".$row['bombeiro']."</td>
                           <td class='register_options' align='center'><a href='../empresa.html' ><img src='../img/edit.png' width='20px' height='20px' ></a>
                           <a href='#'' ><img src='../img/delete.png' width='20px' height='20px' ></a></td>
                         </tr>";
@@ -118,9 +120,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                 <col width="15%">
               <tr>
                 <td><img src="../img/pdf.png"><input value="Gerar PDF" target="_parent" onclick="#" type="buttom"/></td>
-                <td><img src="../img/vermelho.png" width="20px" height="20px">Data vencida</td>
-                <td><img src="../img/laranja.png" width="20px" height="20px">Data a vencer</td>
-                <td><img src="../img/verde.png" width="20px" height="20px">Data valida</td>
+                <td class="text-danger"><img src="../img/vermelho.png" width="20px" height="20px">Data vencida</td>
+                <td class="text-warning"><img src="../img/laranja.png" width="20px" height="20px">Data a vencer</td>
+                <td class="text-success"><img src="../img/verde.png" width="20px" height="20px">Data valida</td>
               </tr>
               </tbody>
             </table>
