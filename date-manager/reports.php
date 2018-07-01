@@ -84,14 +84,13 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                 </tr>
 
                 <?php 
-
                 foreach($dbh->query($sql) as $row) 
                 {
 
                     echo "
                         <tr class='table_content'>
                           <th nowrap scope='row'>".$row['razao_social']."</th>
-                          <td class='text-info'>".$row['receita_federal']."</td>
+                          <td width='100%' class='text-info'>".$row['receita_federal']."</td>
                           <td class='text-info'>".$row['caixa_economica']."</td>
                           <td class='text-info'>".$row['sefaz']."</td>
                           <td class='text-info'>".$row['concordata']."</td>
@@ -100,8 +99,10 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                           <td class='text-info'>".$row['suframa']."</td>
                           <td class='text-info'>".$row['digital']."</td>
                           <td class='text-info'>".$row['bombeiro']."</td>
-                          <td class='register_options' align='center'><a href='../empresa.html' ><img src='../img/edit.png' width='20px' height='20px' ></a>
-                          <a href='#'' ><img src='../img/delete.png' width='20px' height='20px' ></a></td>
+                          <td class='register_options' align='center'>
+                          <a href='editar.php?id=".$row['id']."' class='ls-btn ls-ico-cog'> <img src='../img/edit.png' width='20px' height='20px' >
+                          </a>
+                          <a href='javascript:void(0)' class='btn btn-danger link_exclusao' rel=".$row['id']."><img src='../img/delete.png' width='20px' height='20px' ></a></td>
                         </tr>";
                 }
                 ?>
@@ -120,9 +121,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                 <col width="15%">
               <tr>
                 <td><img src="../img/pdf.png"><input value="Gerar PDF" target="_parent" onclick="#" type="buttom"/></td>
-                <td class="text-danger"><img src="../img/vermelho.png" width="20px" height="20px">Data vencida</td>
-                <td class="text-warning"><img src="../img/laranja.png" width="20px" height="20px">Data a vencer</td>
-                <td class="text-success"><img src="../img/verde.png" width="20px" height="20px">Data valida</td>
+                <td class="text-danger"><img src="../img/vermelho.png" width="20px" height="20px"> Data vencida</td>
+                <td class="text-warning"><img src="../img/laranja.png" width="20px" height="20px"> Data a vencer</td>
+                <td class="text-success"><img src="../img/verde.png" width="20px" height="20px"> Data valida</td>
               </tr>
               </tbody>
             </table>
@@ -151,6 +152,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
   </div> 
 
 </div>
+<script type="text/javascript" src="confirm.js"></script>
 </body>
 </html>
 
