@@ -120,7 +120,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                 <col width="15%">
                 <col width="15%">
               <tr>
-                <td><img src="../img/pdf.png"><input value="Gerar PDF" target="_parent" onclick="#" type="buttom"/></td>
+                <td><img src="../img/pdf.png"><a href="relatorio-geral.php" title="RELATÓRIO GERAL" target="_parent">Relatório Geral</a></td>
                 <td class="text-danger"><img src="../img/vermelho.png" width="20px" height="20px"> Data vencida</td>
                 <td class="text-warning"><img src="../img/laranja.png" width="20px" height="20px"> Data a vencer</td>
                 <td class="text-success"><img src="../img/verde.png" width="20px" height="20px"> Data valida</td>

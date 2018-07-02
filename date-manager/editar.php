@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['user']))
     header("Location: login.php");
 
-if($_SESSION['perm'] != 'adm')
+if(($_SESSION['perm'] != 'adm') and ($_SESSION['perm'] != 'sem'))
     header("Location: 403.php");
 
 
