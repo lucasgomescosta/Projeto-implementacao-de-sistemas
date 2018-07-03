@@ -1,4 +1,5 @@
 <?php
+include 'color-table.php';
 session_start();
 if(!isset($_SESSION['user']))
     header("Location: login.php");
@@ -90,15 +91,15 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                     echo "
                         <tr class='table_content'>
                           <th nowrap scope='row'>".$row['razao_social']."</th>
-                          <td width='100%' class='text-info'>".$row['receita_federal']."</td>
-                          <td class='text-info'>".$row['caixa_economica']."</td>
-                          <td class='text-info'>".$row['sefaz']."</td>
-                          <td class='text-info'>".$row['concordata']."</td>
-                          <td class='text-info'>".$row['pmbv']."</td>
-                          <td class='text-info'>".$row['alvara']."</td>
-                          <td class='text-info'>".$row['suframa']."</td>
-                          <td class='text-info'>".$row['digital']."</td>
-                          <td class='text-info'>".$row['bombeiro']."</td>
+                          <td style= 'background-color:".paint_table($row['receita_federal']) ."' width='100%' class='text-info'>".$row['receita_federal']."</td>
+                          <td style= 'background-color:".paint_table($row['caixa_economica']) ."' class='text-info'>".$row['caixa_economica']."</td>
+                          <td style= 'background-color:".paint_table($row['sefaz']) ."' class='text-info'>".$row['sefaz']."</td>
+                          <td style= 'background-color:".paint_table($row['concordata']) ."' class='text-info'>".$row['concordata']."</td>
+                          <td style= 'background-color:".paint_table($row['pmbv']) ."' class='text-info'>".$row['pmbv']."</td>
+                          <td style= 'background-color:".paint_table($row['alvara']) ."' class='text-info'>".$row['alvara']."</td>
+                          <td style= 'background-color:".paint_table($row['suframa']) ."' class='text-info'>".$row['suframa']."</td>
+                          <td style= 'background-color:".paint_table($row['digital']) ."' class='text-info'>".$row['digital']."</td>
+                          <td style= 'background-color:".paint_table($row['bombeiro']) ."' class='text-info'>".$row['bombeiro']."</td>
                           <td class='register_options' align='center'>
                           <a href='editar.php?id=".$row['id']."' class='ls-btn ls-ico-cog'> <img src='../img/edit.png' width='20px' height='20px' >
                           </a>
