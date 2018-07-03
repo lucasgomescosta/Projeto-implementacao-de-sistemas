@@ -53,7 +53,7 @@ $pdf->SetFont('Helvetica', '', 10);
 
 $sql = 'SELECT * FROM empresas ORDER BY razao_social';
  foreach($pdo->query($sql) as $row) {
- 	 $pdf->Cell(18, 7,''.date($row['razao_social'], 'd/m/Y').''  , 1);
+ 	 $pdf->Cell(18, 7, $row['razao_social'], 1);
      $pdf->Cell(20, 7, $row['receita_federal'], 1);
      $pdf->Cell(20, 7, $row['caixa_economica'], 1);
      $pdf->Cell(20, 7, $row['sefaz'], 1);
