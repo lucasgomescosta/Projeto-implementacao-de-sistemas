@@ -14,7 +14,7 @@ function paint_table($data){
 		if($dias > 10){
 			$select =1;
 		}
-		elseif(($dias <= 10) && ($dias > 0) ){
+		elseif(($dias <= 10) && ($dias >= 0) ){
 			$select = 2;
 		}
 	}
