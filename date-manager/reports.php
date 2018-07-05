@@ -48,10 +48,11 @@ if(!isset($_SESSION['user']))
     <div class="row" align="center">
           <div class="col-sm-6 col-md-6 col-lg-6" align="center">
                 <p>Filtar Empresas</p>
-                <select name="filtrarEmpresas" class="sele" align="center">
-                  <option value="1">Todas Empresas</option>
-                  <option value="2">Empresa1</option>
-                  <option value="3">Empresa2</option>
+                <select name="filtrarEmpresas" class="selectpicker" align="center">
+                   <?php foreach($empresas as $empresa): ?> 
+                      <option title="Combo 1" value="1">Todas Empresas</option>
+                      <option title="Combo 2" value="<?=$empresa->id?>"><?=$empresa->razao_social?></option>
+                   <?php endforeach;?> 
                 </select>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6" align="center">
