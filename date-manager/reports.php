@@ -8,20 +8,22 @@ if(!isset($_SESSION['user']))
 
   $sql = 'SELECT * FROM empresas LIMIT 10';
   $sql_pg = $pdo->query("SELECT * FROM empresas");
+  $stm = $pdo->prepare($sql);
+  $stm->execute();
   $count = $sql_pg->rowCount();
   $calculate = ceil(($count/100)*10);
   $i =1;
 
+
   if(isset($_GET['page'])==$i){
     $url = $_GET['page'];
     $mod = $url * 10 -10;
-
     $sql = "SELECT * FROM empresas LIMIT 10 OFFSET $mod";
     $stm = $pdo->prepare($sql);
     $stm->execute();
 
   }
-  $empresas = $stm->fetchAll(PDO::FETCH_OBJ);
+$empresas = $stm->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
@@ -161,7 +163,7 @@ if(!isset($_SESSION['user']))
         <div align="center" class="pagination">
           <?php
 
-/*              if(@$_GET['page'] !=1){
+            /* if(@$_GET['page'] !=1){
                 $page_back = $_GET['page']  -1;
                 echo "<a href='?page=$page_back'>&laquo;</a>";
               }*/
