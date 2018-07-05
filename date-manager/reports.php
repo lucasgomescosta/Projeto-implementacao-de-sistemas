@@ -6,12 +6,27 @@ if(!isset($_SESSION['user']))
 
  $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
 
-  $sql = 'SELECT id, cnpj, razao_social, contato, inscricao_estadual, inscricao_municipal, inscricao_suframa, senha_estadual, senha_municipal, senha_suframa, receita_federal, caixa_economica, cndt, sefaz, concordata, pmbv, alvara, suframa, digital, bombeiro, rua, bairro, cep, cidade, estado, pais FROM empresas';
+  $sql = 'SELECT * FROM empresas LIMIT 10';
+  $sql_pg = $pdo->query("SELECT * FROM empresas");
+  
+
   $stm = $pdo->prepare($sql);
   $stm->execute();
+
+  $count = $sql_pg->rowCount();
+  $calculate = ceil(($count/100)*10);
+  $i =1;
+
+  if(isset($_GET['page'])==$i){
+    $url = $_GET['page'];
+    $mod = $url * 10 -10;
+
+    $sql = "SELECT * FROM empresas LIMIT 10 OFFSET $mod";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+
+  }
   $empresas = $stm->fetchAll(PDO::FETCH_OBJ);
-
-
 ?>
 
 
@@ -50,8 +65,9 @@ if(!isset($_SESSION['user']))
                 <p>Filtar Empresas</p>
                 <select name="filtrarEmpresas" class="sele" align="center">
                   <option value="1">Todas Empresas</option>
-                  <option value="2">Empresa1</option>
-                  <option value="3">Empresa2</option>
+                 <?php foreach($empresas as $empresa): ?>
+                  <option value="<?=$empresa->razao_social?>"><?=$empresa->razao_social?></option>
+                 <?php endforeach;?>
                 </select>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6" align="center">
@@ -60,6 +76,7 @@ if(!isset($_SESSION['user']))
                   <option value="1">Todas as datas</option>
                   <option value="2">Datas vencidas</option>
                   <option value="3">Datas a vencer</option>
+                  <option value="3">Datas validas</option>
                 </select>
           </div>
       </div>
@@ -89,9 +106,8 @@ if(!isset($_SESSION['user']))
           <?php foreach($empresas as $empresa): ?> 
                   <tr class="table_content">
                       <th nowrap scope="row"><?=$empresa->razao_social?></th>
-                     echo "<script>console.log( 'Debug Objects: " . paint_table(<?=$empresa->receita_federal?>). "' );</script>"; 
-                       
-                       <td style="background-color:<?=paint_table($empresa->receita_federal)?>"  class='text-info'><?=$empresa->receita_federal?></td>"
+          
+                       <td style="background-color:<?=paint_table($empresa->receita_federal)?>"  class='text-info'><?=$empresa->receita_federal?></td>
                        
                        <td style="background-color:<?=paint_table($empresa->caixa_economica)?>" class="text-info"><?=$empresa->caixa_economica?></td>
                        
@@ -147,14 +163,18 @@ if(!isset($_SESSION['user']))
           </div>
         
         <div align="center" class="pagination">
-          <a href="#">&laquo;</a>
-          <a href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#">&raquo;</a>
+          <?php
+
+/*              if(@$_GET['page'] !=1){
+                $page_back = $_GET['page']  -1;
+                echo "<a href='?page=$page_back'>&laquo;</a>";
+              }*/
+              while($i <= $calculate){
+                echo "<a href='?page=$i'>$i </a>";  
+                $i++;
+              }
+          ?>      
+         
         </div>
   </div>
   
