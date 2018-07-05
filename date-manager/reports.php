@@ -90,15 +90,25 @@ if(!isset($_SESSION['user']))
                   <tr class="table_content">
                       <th nowrap scope="row"><?=$empresa->razao_social?></th>
                      echo "<script>console.log( 'Debug Objects: " . paint_table(<?=$empresa->receita_federal?>). "' );</script>"; 
-                       <td style='background-color:".paint_table(<?=$empresa->receita_federal?>)."'  class='text-info'><?=$empresa->receita_federal?></td>"
-                          <td style="background-color:paint_table(<?=$empresa->caixa_economica?>)" class="text-info"><?=$empresa->caixa_economica?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->sefaz?>)"" class="text-info"><?=$empresa->sefaz?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->concordata?>)"" class="text-info"><?=$empresa->concordata?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->pmbv?>)"" class="text-info"><?=$empresa->pmbv?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->alvara?>)"" class="text-info"><?=$empresa->alvara?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->suframa?>)"" class="text-info"><?=$empresa->suframa?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->digital?>)"" class="text-info"><?=$empresa->digital?></td>
-                          <td style="background-color:"paint_table(<?=$empresa->bombeiro?>)"" class="text-info"><?=$empresa->bombeiro?></td>
+                       
+                       <td style="background-color:<?=paint_table($empresa->receita_federal)?>"  class='text-info'><?=$empresa->receita_federal?></td>"
+                       
+                       <td style="background-color:<?=paint_table($empresa->caixa_economica)?>" class="text-info"><?=$empresa->caixa_economica?></td>
+                       
+                       <td style="background-color:<?=paint_table($empresa->sefaz)?>" class="text-info"><?=$empresa->sefaz?> </td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->concordata)?>" class="text-info"><?=$empresa->concordata?></td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->pmbv)?>" class="text-info"><?=$empresa->pmbv?></td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->alvara)?>" class="text-info"><?=$empresa->alvara?></td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->suframa)?>" class="text-info"><?=$empresa->suframa?></td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->digital)?>" class="text-info"><?=$empresa->digital?></td>
+                       
+                          <td style="background-color:<?=paint_table($empresa->bombeiro)?>" class="text-info"><?=$empresa->bombeiro?></td>
+                       
                           <td class="register_options" align="center" style="<?php if($_SESSION['perm'] == 'bas'){ echo 'display:none;';} else?>">
                             <a href="editar.php?id=<?=$empresa->id?>" class="ls-btn ls-ico-cog"> <img src="../img/edit.png" width="20px" height="20px" >
                             </a> 
