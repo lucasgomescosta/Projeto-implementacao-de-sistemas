@@ -4,7 +4,12 @@ session_start();
 if(!isset($_SESSION['user']))
     header("Location: login.php");
 
-$pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
+ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
+
+  $sql = 'SELECT id, cnpj, razao_social, contato, inscricao_estadual, inscricao_municipal, inscricao_suframa, senha_estadual, senha_municipal, senha_suframa, receita_federal, caixa_economica, cndt, sefaz, concordata, pmbv, alvara, suframa, digital, bombeiro, rua, bairro, cep, cidade, estado, pais FROM empresas';
+  $stm = $pdo->prepare($sql);
+  $stm->execute();
+  $empresas = $stm->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
@@ -62,11 +67,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
     <br/>
     
       <div class="table-responsive">
-            <?php
-                $dbh = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
+        <?php if(!empty($empresas)): ?>
 
-                $sql = 'SELECT * FROM empresas ORDER BY razao_social';
-            ?>
           <div class="tabledata" align="center" style="overflow-x:auto;">
             <table width="60%" border="1" >
                 <tbody border>
@@ -81,34 +83,37 @@ $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
                   <th scope="col">&nbsp;&nbsp;&nbsp;Suframa&nbsp;&nbsp;&nbsp;</th>
                   <th scope="col">&nbsp;&nbsp;&nbsp;Digital&nbsp;&nbsp;&nbsp;</th>
                   <th scope="col">&nbsp;&nbsp;&nbsp;Bombeiro&nbsp;&nbsp;&nbsp;</th>
-                  <th scope="col">&nbsp;&nbsp;&nbsp;Gerencia&nbsp;&nbsp;&nbsp;</th>
+                  <th style="<?php if($_SESSION['perm'] == 'bas'){ echo 'display:none;';} else ?>" scope="col">&nbsp;&nbsp;&nbsp;Gerencia&nbsp;&nbsp;&nbsp;</th>
                 </tr>
 
-                <?php 
-                foreach($dbh->query($sql) as $row) 
-                {
-
-                    echo "
-                        <tr class='table_content'>
-                          <th nowrap scope='row'>".$row['razao_social']."</th>
-                          <td style= 'background-color:".paint_table($row['receita_federal']) ."' width='100%' class='text-info'>".$row['receita_federal']."</td>
-                          <td style= 'background-color:".paint_table($row['caixa_economica']) ."' class='text-info'>".$row['caixa_economica']."</td>
-                          <td style= 'background-color:".paint_table($row['sefaz']) ."' class='text-info'>".$row['sefaz']."</td>
-                          <td style= 'background-color:".paint_table($row['concordata']) ."' class='text-info'>".$row['concordata']."</td>
-                          <td style= 'background-color:".paint_table($row['pmbv']) ."' class='text-info'>".$row['pmbv']."</td>
-                          <td style= 'background-color:".paint_table($row['alvara']) ."' class='text-info'>".$row['alvara']."</td>
-                          <td style= 'background-color:".paint_table($row['suframa']) ."' class='text-info'>".$row['suframa']."</td>
-                          <td style= 'background-color:".paint_table($row['digital']) ."' class='text-info'>".$row['digital']."</td>
-                          <td style= 'background-color:".paint_table($row['bombeiro']) ."' class='text-info'>".$row['bombeiro']."</td>
-                          <td class='register_options' align='center'>
-                          <a href='editar.php?id=".$row['id']."' class='ls-btn ls-ico-cog'> <img src='../img/edit.png' width='20px' height='20px' >
-                          </a>
-                          <a href='javascript:void(0)' class='btn btn-danger link_exclusao' rel=".$row['id']."><img src='../img/delete.png' width='20px' height='20px' ></a></td>
-                        </tr>";
-                }
-                ?>
+          <?php foreach($empresas as $empresa): ?> 
+                  <tr class="table_content">
+                      <th nowrap scope="row"><?=$empresa->razao_social?></th>
+                     echo "<script>console.log( 'Debug Objects: " . paint_table(<?=$empresa->receita_federal?>). "' );</script>"; 
+                       <td style='background-color:".paint_table(<?=$empresa->receita_federal?>)."'  class='text-info'><?=$empresa->receita_federal?></td>"
+                          <td style="background-color:paint_table(<?=$empresa->caixa_economica?>)" class="text-info"><?=$empresa->caixa_economica?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->sefaz?>)"" class="text-info"><?=$empresa->sefaz?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->concordata?>)"" class="text-info"><?=$empresa->concordata?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->pmbv?>)"" class="text-info"><?=$empresa->pmbv?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->alvara?>)"" class="text-info"><?=$empresa->alvara?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->suframa?>)"" class="text-info"><?=$empresa->suframa?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->digital?>)"" class="text-info"><?=$empresa->digital?></td>
+                          <td style="background-color:"paint_table(<?=$empresa->bombeiro?>)"" class="text-info"><?=$empresa->bombeiro?></td>
+                          <td class="register_options" align="center" style="<?php if($_SESSION['perm'] == 'bas'){ echo 'display:none;';} else?>">
+                            <a href="editar.php?id=<?=$empresa->id?>" class="ls-btn ls-ico-cog"> <img src="../img/edit.png" width="20px" height="20px" >
+                            </a> 
+                            <a style="<?php if($_SESSION['perm'] != 'adm'){ echo 'display:none;';}?>"  href="javascript:void(0)" class="btn btn-danger link_exclusao" rel="<?=$empresa->id?>"><img src="../img/delete.png" width="20px" height="20px">
+                            </a>
+                          </td>
+                    
+                    </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
+              <?php else: ?>
+ 
+                <h3 class="text-center text-primary">Não existem empresas cadastradas!</h3>
+              <?php endif; ?>
             </div>
           <br/>
           <br/>

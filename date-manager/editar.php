@@ -3,10 +3,11 @@ session_start();
 if(!isset($_SESSION['user']))
     header("Location: login.php");
 
-if(($_SESSION['perm'] != 'adm') and ($_SESSION['perm'] != 'sem'))
+$teste = $_SESSION['perm'];
+if($_SESSION['perm'] == 'bas'){
     header("Location: 403.php");
-
-
+}
+else if($teste == 'adm' || $teste == 'sem')
 $pdo = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
 
 $id = isset($_GET['id']) ? $_GET['id'] : ''; 

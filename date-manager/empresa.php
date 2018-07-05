@@ -3,8 +3,11 @@
 	if(!isset($_SESSION['user']))
 	    header("Location: login.php");
 
-	if($_SESSION['perm'] != 'adm')
-	    header("Location: 403.php");
+$teste = $_SESSION['perm'];
+if($teste == 'bas'){
+    header("Location: 403.php");
+}
+else if($teste == 'adm' || $teste == 'sem')
 	
 	// Recebe os dados enviados pela submissão
 	$acao  = (isset($_POST['acao'])) ? $_POST['acao'] : '';
