@@ -25,6 +25,9 @@ if(!isset($_SESSION['user']))
   }
 $empresas = $stm->fetchAll(PDO::FETCH_OBJ);
 
+$stm1= $pdo->prepare("SELECT * FROM empresas");
+$stm1->execute();
+$empresaFil= $stm1->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -61,21 +64,47 @@ $empresas = $stm->fetchAll(PDO::FETCH_OBJ);
     
     <div class="row" align="center">
           <div class="col-sm-6 col-md-6 col-lg-6" align="center">
-                <p>Filtar Empresas</p>
-                <select name="filtrarEmpresas" class="selectpicker" align="center">
-                   <?php foreach($empresas as $empresa): ?> 
-                      <option title="Combo 1" value="1">Todas Empresas</option>
-                      <option title="Combo 2" value="<?=$empresa->id?>"><?=$empresa->razao_social?></option>
+                
+              <form id="filtroEmpresa" action="">
+                <p>Filtrar por Empresas</p>
+                <select name="filtrarEmpresas" class="form-control" align="center">
+                      <option title="Todas Empresas" value="1">Todas Empresas</option>
+                   <?php foreach($empresaFil as $empresa): ?> 
+                      <option title="<?=$empresa->razao_social?>" value="<?=$empresa->razao_social?>"><?=$empresa->razao_social?></option>
                    <?php endforeach;?> 
                 </select>
+              <button type="submit"class="btn btn-default" form="filtroEmpresa" value="">Filtrar</button> <?php 
+                    if(isset($_GET['filtrarEmpresas'])){
+                       $aux = $_GET['filtrarEmpresas'];
+                       if($aux != 1){
+                        $sql = "SELECT * FROM empresas WHERE razao_social = '$aux'";
+                        $fil = $pdo->prepare($sql);
+                        $fil->execute();
+                        $empresas = $fil->fetchAll(PDO::FETCH_OBJ);
+                      }
+                      else{
+                        $stm1= $pdo->prepare("SELECT * FROM empresas");
+                        $stm1->execute();
+                        $empresaFil= $stm1->fetchAll(PDO::FETCH_OBJ);
+
+
+                      }
+                    }
+                    
+              ?>  
+              </form>
+              
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-6" align="center">
-                <p>Filtar Datas</p>
-                <select name="filtrarDatas" align="center">
+          <div class="col-sm-6 col-md-6 col-lg-6" align="center" >
+            <form  id="filtroDatas">    <p>Filtrar por Datas</p>
+                <select name="filtrarDatas" class="form-control" align="center">
                   <option value="1">Todas as datas</option>
                   <option value="2">Datas vencidas</option>
                   <option value="3">Datas a vencer</option>
                 </select>
+             <button class="btn btn-default" type="submit" form="filtroDatas" value="">Filtrar</button>   
+             </form>
+              
           </div>
       </div>
     <br/>
