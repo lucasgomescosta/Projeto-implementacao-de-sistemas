@@ -104,7 +104,33 @@ $empresaFil= $stm1->fetchAll(PDO::FETCH_OBJ);
                 </select>
              <button class="btn btn-default" type="submit" form="filtroDatas" value="">Filtrar</button>   
              </form>
-              
+             <?php 
+             if(isset($_GET['filtrarDatas'])){
+              $aux1= $_GET['filtrarDatas'];
+              switch ($aux1) {
+                case 2:
+                  # code...
+                  $sql = "SELECT * FROM `empresas` WHERE (receita_federal < CURRENT_DATE) OR ( caixa_economica < CURRENT_DATE) OR (cndt < CURRENT_DATE) OR (sefaz < CURRENT_DATE) OR (concordata < CURRENT_DATE) OR (pmbv < CURRENT_DATE) OR (alvara < CURRENT_DATE) OR (suframa < CURRENT_DATE) OR (digital < CURRENT_DATE) OR (bombeiro < CURRENT_DATE)";
+                  $fil = $pdo->prepare($sql);
+                  $fil->execute();
+                  $empresas = $fil->fetchAll(PDO::FETCH_OBJ);
+                  break;
+                case 3:
+                $sql = "SELECT * FROM `empresas` WHERE (receita_federal >= CURRENT_DATE AND receita_federal < CURRENT_DATE + INTERVAL 11 DAY) OR ( caixa_economica >= CURRENT_DATE AND caixa_economica < CURRENT_DATE + INTERVAL 11 DAY) OR (cndt >= CURRENT_DATE AND cndt < CURRENT_DATE + INTERVAL 11 DAY ) OR (sefaz >= CURRENT_DATE AND sefaz < CURRENT_DATE + INTERVAL 11 DAY) OR (concordata >= CURRENT_DATE AND concordata < CURRENT_DATE + INTERVAL 11 DAY) OR (pmbv >= CURRENT_DATE AND pmbv < CURRENT_DATE + INTERVAL 11 DAY) OR (alvara >= CURRENT_DATE AND alvara < CURRENT_DATE + INTERVAL 11 DAY) OR (suframa >= CURRENT_DATE AND suframa < CURRENT_DATE + INTERVAL 11 DAY ) OR (digital >= CURRENT_DATE AND digital < CURRENT_DATE + INTERVAL 11 DAY) OR (bombeiro >= CURRENT_DATE AND bombeiro < CURRENT_DATE + INTERVAL 11 DAY)";
+                $fil = $pdo->prepare($sql);
+                $fil->execute();
+                $empresas = $fil->fetchAll(PDO::FETCH_OBJ);
+
+                  break;
+                default:
+                  # code...
+                  $fil = $pdo->prepare($sql);
+                  $fil->execute();
+                  $empresas = $fil->fetchAll(PDO::FETCH_OBJ);
+                  break;
+              }
+             }
+             ?>
           </div>
       </div>
     <br/>
