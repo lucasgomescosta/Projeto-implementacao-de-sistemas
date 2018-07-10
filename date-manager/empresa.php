@@ -50,9 +50,9 @@ else if($teste == 'adm' || $teste == 'sem')
 
 		if ($retorno):
 				echo "<div class='alert alert-success' role='alert'>Registro inserido com sucesso, aguarde você está sendo redirecionado ...</div> ";
-		    else:
+		else:
 		    	echo "<div class='alert alert-danger' role='alert'>Erro ao inserir registro!</div> ";
-			endif;
+		endif;
 
 			echo "<meta http-equiv=refresh content='3;URL=reports.php'>";
 	endif;
