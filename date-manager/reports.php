@@ -67,10 +67,10 @@ $empresaFil= $stm1->fetchAll(PDO::FETCH_OBJ);
                 
               <form id="filtroEmpresa" action="">
                 <p>Filtrar por Empresas</p>
-                <select style="font-color: white" name="filtrarEmpresas" class="form-control" align="center" style="background-color: transparent; background: transparent; color: #000; box-sizing: border-box; padding: 20px 30px; >
-                   <option title="Todas Empresas" value="1" style="color: write; background-color: rgba(0,0,0,0.80);">Todas Empresas</option>
+                <select name="filtrarEmpresas" class="form-control" align="center" style="background:rgba(0,0,0,0.80); color: white;">
+                   <option title="Todas Empresas" value="1" style="color: white; background-color: rgba(0,0,0,0.80);">Todas Empresas</option>
                    <?php foreach($empresaFil as $empresa): ?> 
-                      <option style="font-color: white" title="<?=$empresa->razao_social?>" style="color: write; background-color: rgba(0,0,0,0.80);" value="<?=$empresa->razao_social?>"><?=$empresa->razao_social?></option>
+                      <option style="color: white; background-color: rgba(0,0,0,0.80)" title="<?=$empresa->razao_social?>" value="<?=$empresa->razao_social?>"><?=$empresa->razao_social?></option>
                    <?php endforeach;?> 
                 </select>
               <button type="submit"class="btn" form="filtroEmpresa" value="" style="background-color: black; box-sizing: border-box; padding: 10px 20px; 
@@ -98,11 +98,11 @@ $empresaFil= $stm1->fetchAll(PDO::FETCH_OBJ);
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6" align="center" >
             <form  id="filtroDatas">    <p>Filtrar por Datas</p>
-                <select style="font-color: white" name="filtrarDatas" class="form-control" align="center" style="background-color: transparent;  background: transparent;  color: #000; box-sizing: border-box; padding: 20px 30px; 
+                <select style="color: white; background-color: rgba(0,0,0,0.80)" name="filtrarDatas" class="form-control" align="center" style="background-color: transparent;  background: transparent;  color: #000; box-sizing: border-box; padding: 20px 30px; 
                 color: #fff">
-                  <option value="1"style="font-color: white">Todas as datas</option>
-                  <option value="2"style="font-color: white">Datas vencidas</option>
-                  <option value="3"style="font-color: white">Datas a vencer</option>
+                  <option value="1"style="color: white; background-color: rgba(0,0,0,0.80);">Todas as datas</option>
+                  <option value="2"style="color: white; background-color: rgba(0,0,0,0.80);">Datas vencidas</option>
+                  <option value="3"style="color: white; background-color: rgba(0,0,0,0.80);">Datas a vencer</option>
                 </select>
              <button class="btn" type="submit" form="filtroDatas" value="" style="background-color: black; box-sizing: border-box; padding: 10px 20px; 
                 color: #fff">Filtrar</button>   
