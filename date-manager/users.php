@@ -47,7 +47,7 @@ if(isset($_POST['user']) && isset($_POST['email']) && isset($_POST['pass']) && i
 			permissao) VALUES (
 			:nome, 
 			:email, 
-			:senha, 
+			MD5(:senha), 
 			:permission)";
 
             $stmt = $dbh->prepare($sql);
@@ -72,7 +72,6 @@ if(isset($_POST['user']) && isset($_POST['email']) && isset($_POST['pass']) && i
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </header>
-<body>
 <body>
 <header>
     <div class="nav-bar navbar-fixed-top">
@@ -162,7 +161,7 @@ if(isset($_POST['user']) && isset($_POST['email']) && isset($_POST['pass']) && i
                         <td>" . $row['email'] . "</td>
                         <td><div style='color: ".$color. "'><b>" . $permissao . "</b></div></td>
                         <td style='text-align: center' class='register_options' align='center'><a href='#'><img src='img/edit.png' width='20px' height='20px' ></a>
-                            <a href='#' ><img src='img/delete.png' width='20px' height='20px' ></a></td>
+                            <a href='delete.php?user=" . $row['nome'] . "&id=" . $row['id'] . "' ><img src='img/delete.png' width='20px' height='20px' ></a></td>
                     </tr>";
 
                 }

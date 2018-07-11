@@ -13,7 +13,7 @@ $show_error_msg = false;
     {
         $dbh = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
 
-        $sql = 'SELECT * FROM usuario WHERE email="' . $_POST['email'] . '" AND senha="' . $_POST['pass'] . '"';
+        $sql = 'SELECT * FROM usuario WHERE email="' . $_POST['email'] . '" AND senha=MD5(' . $_POST['pass'] . ')';
 
         foreach($dbh->query($sql) as $row) {
             print_r($row);
